@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>James Rupert L. Velbis — Application / Technical SaaS Support Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060810;
+  --surface: #0d1117;
+  --surface2: #111827;
+  --border: #1f2a3c;
+  --border2: #243044;
+  --accent: #38bdf8;
+  --accent-dim: rgba(56,189,248,0.12);
+  --accent2: #818cf8;
+  --accent3: #34d399;
+  --gold: #fbbf24;
+  --text: #f0f4fc;
+  --muted: #64748b;
+  --muted2: #94a3b8;
+  --tag-bg: #0f1923;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.bg-orb1 {
+  position: fixed; top: -300px; left: -200px;
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+}
+.bg-orb2 {
+  position: fixed; bottom: -200px; right: -150px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(129,140,248,0.05) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+}
+.bg-grid {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(56,189,248,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+  pointer-events: none; z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 64px;
+  background: rgba(6,8,16,0.82);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 16px;
+  color: var(--text); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: blink 2.5s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.nav-pill {
+  padding: 8px 18px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(56,189,248,0.3);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.05em;
+  text-decoration: none; cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-pill:hover { background: rgba(56,189,248,0.2); }
+
+/* HERO */
+.hero-wrap {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 100px 60px 80px;
+  max-width: 1200px; margin: 0 auto;
+}
+.hero-content {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; width: 100%;
+}
+
+.status-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px 6px 10px;
+  background: rgba(52,211,153,0.08);
+  border: 1px solid rgba(52,211,153,0.25);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--accent3);
+  letter-spacing: 0.06em; margin-bottom: 28px;
+  animation: fadeUp 0.5s ease both;
+}
+.status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent3); animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 800; line-height: 1.05;
+  letter-spacing: -0.03em;
+  animation: fadeUp 0.5s 0.08s ease both;
+}
+h1 em { font-style: normal; color: var(--accent); }
+
+.hero-role {
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; color: var(--accent2); letter-spacing: 0.04em;
+  animation: fadeUp 0.5s 0.14s ease both;
+}
+.hero-desc {
+  margin-top: 22px; font-size: 14px; color: var(--muted2);
+  line-height: 1.85; max-width: 480px;
+  animation: fadeUp 0.5s 0.2s ease both;
+}
+.hero-btns {
+  display: flex; gap: 12px; margin-top: 36px;
+  animation: fadeUp 0.5s 0.26s ease both;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.04em;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.2s; font-weight: 500;
+}
+.btn-primary { background: var(--accent); color: #000; }
+.btn-primary:hover { background: #7dd3fc; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(56,189,248,0.3); }
+.btn-outline { background: transparent; border: 1px solid var(--border2); color: var(--muted2); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-right {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  animation: fadeUp 0.5s 0.3s ease both;
+}
+.stat-card {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 28px 24px; position: relative; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.stat-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--accent2));
+  opacity: 0; transition: opacity 0.2s;
+}
+.stat-card:hover { border-color: rgba(56,189,248,0.35); transform: translateY(-3px); }
+.stat-card:hover::before { opacity: 1; }
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 40px; font-weight: 800; line-height: 1; color: var(--text);
+}
+.stat-num sup { font-size: 20px; color: var(--accent); }
+.stat-label { font-size: 11px; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* CONTENT AREA */
+#content {
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 60px 100px;
+}
+
+/* TAB BAR */
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 60px;
+  position: sticky; top: 64px; z-index: 150;
+  background: rgba(6,8,16,0.94);
+  backdrop-filter: blur(20px);
+  margin-left: -60px; margin-right: -60px;
+  padding: 0 60px;
+  overflow-x: auto;
+}
+.tab-bar::-webkit-scrollbar { height: 0; }
+
+.tab-btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 16px 18px;
+  background: none; border: none; cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s; white-space: nowrap;
+}
+.tab-btn .ti { font-size: 14px; }
+.tab-btn:hover { color: var(--muted2); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: tabIn 0.3s ease; }
+@keyframes tabIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+.panel-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 40px; line-height: 1.1;
+}
+.panel-title span { color: var(--accent); }
+
+/* TIMELINE */
+.timeline { display: flex; flex-direction: column; }
+.tl-item { display: grid; grid-template-columns: 180px 1fr; position: relative; }
+.tl-left {
+  padding: 32px 36px 32px 0;
+  border-right: 1px solid var(--border); position: relative;
+}
+.tl-left::after {
+  content: ''; position: absolute;
+  right: -5px; top: 40px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--border2); border: 2px solid var(--bg);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.tl-item:hover .tl-left::after { background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+.tl-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.tl-company {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 12px; color: var(--text); margin-top: 6px; line-height: 1.3;
+}
+.tl-right { padding: 32px 0 32px 40px; }
+.tl-role {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px;
+}
+.tl-role em { font-style: normal; color: var(--accent2); font-size: 14px; }
+.tl-tag {
+  display: inline-block;
+  background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2);
+  padding: 2px 10px; font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--accent); margin-bottom: 16px; letter-spacing: 0.06em;
+}
+.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.tl-bullets li { display: flex; gap: 12px; font-size: 13px; color: var(--muted2); line-height: 1.65; }
+.tl-bullets li::before { content: '▸'; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+
+/* SKILLS */
+.skills-wrap { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 2px; }
+.skill-card {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 28px; position: relative; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.skill-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--accent2));
+  opacity: 0; transition: opacity 0.2s;
+}
+.skill-card:hover { border-color: rgba(56,189,248,0.3); transform: translateY(-3px); }
+.skill-card:hover::after { opacity: 1; }
+.skill-icon { font-size: 24px; margin-bottom: 14px; }
+.skill-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--text); margin-bottom: 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  background: var(--tag-bg); border: 1px solid var(--border2);
+  padding: 4px 10px; font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--muted2); letter-spacing: 0.04em;
+}
+
+/* CERTS */
+.certs-wrap { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2px; }
+.cert-card {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 28px; position: relative;
+  transition: border-color 0.2s, transform 0.2s;
+  text-decoration: none; display: block; color: inherit;
+}
+.cert-card:hover { border-color: rgba(56,189,248,0.4); transform: translateY(-3px); }
+.cert-ms-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2);
+  padding: 4px 10px; margin-bottom: 16px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.06em;
+}
+.cert-safety-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2);
+  padding: 4px 10px; margin-bottom: 16px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent3); letter-spacing: 0.06em;
+}
+.cert-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+.cert-code { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); margin-bottom: 8px; }
+.cert-meta { font-size: 11px; color: var(--muted); }
+.cert-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 14px; font-size: 11px; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+
+/* AWARDS */
+.awards-wrap { display: flex; flex-direction: column; gap: 2px; }
+.award-card {
+  display: flex; align-items: flex-start; gap: 24px;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 28px; transition: border-color 0.2s;
+}
+.award-card:hover { border-color: rgba(251,191,36,0.35); }
+.award-emoji { font-size: 32px; flex-shrink: 0; }
+.award-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; color: var(--text); margin-bottom: 6px; }
+.award-sub { font-size: 12px; color: var(--muted); }
+.award-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.2);
+  padding: 3px 10px; margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #fbbf24;
+}
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.contact-left { background: var(--surface); border: 1px solid var(--border); padding: 44px; }
+.contact-intro { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; }
+.contact-intro span { color: var(--accent); }
+.contact-desc { font-size: 13px; color: var(--muted2); line-height: 1.9; margin-bottom: 24px; }
+.contact-loc {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--muted); text-decoration: none;
+  font-family: 'JetBrains Mono', monospace; transition: color 0.2s;
+}
+.contact-loc:hover { color: var(--accent); }
+.contact-right { display: flex; flex-direction: column; gap: 2px; }
+.contact-item {
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px; text-decoration: none; color: var(--text);
+  transition: border-color 0.2s, background 0.2s; flex: 1;
+}
+.contact-item:hover { border-color: var(--accent); background: rgba(56,189,248,0.04); }
+.c-icon { font-size: 20px; flex-shrink: 0; }
+.c-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.c-val { font-size: 13px; color: var(--text); margin-top: 2px; }
+
+/* FOOTER */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 28px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; color: var(--text); }
+.footer-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.footer-right { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  nav { padding: 0 24px; }
+  .hero-wrap { padding: 90px 24px 60px; }
+  .hero-content { grid-template-columns: 1fr; gap: 48px; }
+  .hero-right { grid-template-columns: 1fr 1fr; }
+  #content { padding: 0 24px 80px; }
+  .tab-bar { margin-left: -24px; margin-right: -24px; padding: 0 24px; }
+  .tl-item { grid-template-columns: 1fr; }
+  .tl-left { border-right: none; padding: 16px 0 0; }
+  .tl-left::after { display: none; }
+  .tl-right { padding: 16px 0 32px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+  .tab-btn .tab-text { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-orb1"></div>
+<div class="bg-orb2"></div>
+<div class="bg-grid"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand"><div class="nav-dot"></div>James Velbis</a>
+  <a href="mailto:jamesrupertvelbis@gmail.com" class="nav-pill">✉ Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<div style="position:relative; z-index:1;">
+  <div class="hero-wrap">
+    <div class="hero-content">
+      <div class="hero-left">
+        <div style="display:flex; align-items:center; gap:18px; margin-bottom:28px; animation: fadeUp 0.5s ease both;">
+          <div style="position:relative; flex-shrink:0;">
+            <img src="https://i.imgur.com/STQBJbl.jpeg" 
+	    alt="James Rupert Velbis" style="width:72px; height:72px; border-radius:50%; object-fit:cover; border:2px solid var(--accent); box-shadow:0 0 20px rgba(56,189,248,0.3);">
+            <div style="position:absolute; bottom:2px; right:2px; width:12px; height:12px; background:var(--accent3); border-radius:50%; border:2px solid var(--bg); animation:pulse 2s infinite;"></div>
+          </div>
+          <div class="status-badge" style="margin-bottom:0;"><div class="status-dot"></div>Open to Opportunities</div>
+        </div>
+        <h1>James Rupert<br><em>L. Velbis</em></h1>
+        <div class="hero-role">// Application / Technical SaaS Support Specialist</div>
+        <p class="hero-desc">
+          3+ years in enterprise application &amp; SaaS support. 8+ years of construction domain expertise.
+          Bridging deep technical knowledge with real-world industry context.
+        </p>
+        <div class="hero-btns">
+          <a href="#content" onclick="scrollToTab('experience'); return false;" class="btn btn-primary">View Experience ↓</a>
+          <a href="#content" onclick="scrollToTab('contact'); return false;" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stat-card">
+          <div class="stat-num">150<sup>+</sup></div>
+          <div class="stat-label">Monthly tickets resolved at Accenture</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">70<sup>+</sup></div>
+          <div class="stat-label">Chats &amp; emails closed per month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">20<sup>+</sup></div>
+          <div class="stat-label">Construction projects led</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10<sup>+yr</sup></div>
+          <div class="stat-label">Total Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div id="content">
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('experience', this)"><span class="ti">💼</span><span class="tab-text">Experience</span></button>
+    <button class="tab-btn" onclick="switchTab('skills', this)"><span class="ti">⚡</span><span class="tab-text">Skills</span></button>
+    <button class="tab-btn" onclick="switchTab('certifications', this)"><span class="ti">🎖️</span><span class="tab-text">Certifications</span></button>
+    <button class="tab-btn" onclick="switchTab('awards', this)"><span class="ti">🏆</span><span class="tab-text">Awards</span></button>
+    <button class="tab-btn" onclick="switchTab('contact', this)"><span class="ti">✉️</span><span class="tab-text">Contact</span></button>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="tab-panel active" id="tab-experience">
+    <div class="panel-title">Professional <span>Experience</span></div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">May 2025 – Present</div>
+          <div class="tl-company">Platserv PH Corp.</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">SaaS Technical Support Specialist <em>· Client: Groundplan</em></div>
+          <div class="tl-tag">Current Role</div>
+          <ul class="tl-bullets">
+            <li>Delivered comprehensive technical support via Intercom for Groundplan users — construction professionals including subcontractors, electricians, and GCs — closing an average of 70 chats/emails per month with high satisfaction.</li>
+            <li>Generated weekly and monthly performance reports from HubSpot (chat/email volume, response times, course sign-ups), presenting actionable insights to drive support improvements.</li>
+            <li>Completed full regression test cycles in Testmo to validate developer updates and new features, ensuring zero critical post-deployment defects.</li>
+            <li>Collaborated with development teams via Slack and Basecamp — logging bugs, providing detailed feedback, and contributing to feature enhancements.</li>
+            <li>Built knowledge base documentation and best-practice guides to reduce recurring inquiries and boost team efficiency.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">Mar 2023 – May 2025</div>
+          <div class="tl-company">Accenture, Inc.</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">Package App Development Analyst<em>· Client: Ross Stores</em></div>
+          <div class="tl-tag">Enterprise · Retail IT</div>
+          <ul class="tl-bullets">
+            <li>Provided L2 enterprise application support via ServiceNow for retail clients, resolving 120+ tickets per month while meeting SLAs and minimizing downtime through rapid root-cause analysis.</li>
+            <li>Designed and implemented process automations using PowerShell, VBS, SQL, and Batch scripting — eliminating repetitive tasks and improving workflow efficiency in critical retail IT operations.</li>
+            <li>Developed interactive dashboards in ServiceNow for real-time monitoring of system performance and incident trends.</li>
+            <li>Engineered an automation workaround for file size limitations, preventing costly system upgrades and ensuring uninterrupted client operations.</li>
+            <li>Transitioned across POS/Registers/ISP and Workforce Management teams, building deep expertise in Workjam and PeopleWorks.</li>
+            <li>Monitored Control-M job schedules, analyzed workflow issues, and prepared detailed performance and incident reports with recommendations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-date">Jun 2015 – Mar 2023</div>
+          <div class="tl-company">Marcbilt Construction Inc.</div>
+        </div>
+        <div class="tl-right">
+          <div class="tl-role">Office Engineer <em>/ Project Coordinator</em></div>
+          <div class="tl-tag">Construction</div>
+          <ul class="tl-bullets">
+            <li>Led cost estimation, budgeting, and BOQ preparation for 20+ projects, securing multimillion-peso contracts through competitive public and private sector bidding.</li>
+            <li>Produced technical drawings, basic 3D models, and as-built documentation using AutoCAD for project compliance and handover.</li>
+            <li>Developed project schedules and coordinated with clients, architects, suppliers, and regulatory agencies to ensure on-time delivery.</li>
+            <li>Negotiated with suppliers for procurement, managed material inventory, and prepared financial proposals to support project execution.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="tab-panel" id="tab-skills">
+    <div class="panel-title">Key <span>Skills</span></div>
+    <div class="skills-wrap">
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-title">SaaS &amp; Application Support</div>
+        <div class="tags">
+          <span class="tag">Groundplan</span><span class="tag">Workjam</span>
+          <span class="tag">PeopleWorks</span><span class="tag">L2 Support</span>
+          <span class="tag">SLA Management</span><span class="tag">Root Cause Analysis</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎫</div>
+        <div class="skill-title">Ticketing &amp; Incident Management</div>
+        <div class="tags">
+          <span class="tag">ServiceNow</span><span class="tag">Intercom</span>
+          <span class="tag">HubSpot CRM</span><span class="tag">Control-M</span>
+          <span class="tag">Incident Management</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💻</div>
+        <div class="skill-title">Scripting &amp; Automation</div>
+        <div class="tags">
+          <span class="tag">PowerShell</span><span class="tag">VBScript</span>
+          <span class="tag">SQL</span><span class="tag">Batch Scripting</span>
+          <span class="tag">Process Automation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔬</div>
+        <div class="skill-title">QA &amp; Testing</div>
+        <div class="tags">
+          <span class="tag">Testmo</span><span class="tag">Regression Testing</span>
+          <span class="tag">UAT</span><span class="tag">Bug Reporting</span>
+          <span class="tag">Deployment Validation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🏗️</div>
+        <div class="skill-title">Construction Engineering</div>
+        <div class="tags">
+          <span class="tag">BOQ Preparation</span><span class="tag">Takeoff &amp; Estimating</span>
+          <span class="tag">AutoCAD</span><span class="tag">Project Coordination</span>
+          <span class="tag">Procurement</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤝</div>
+        <div class="skill-title">Collaboration &amp; Reporting</div>
+        <div class="tags">
+          <span class="tag">Slack</span><span class="tag">Basecamp</span>
+          <span class="tag">Microsoft Teams</span><span class="tag">Advanced Excel</span>
+          <span class="tag">Dashboard Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="tab-panel" id="tab-certifications">
+    <div class="panel-title">Certifications <span>&amp; Credentials</span></div>
+    <div class="certs-wrap">
+      <a href="https://www.credly.com/users/james-rupert-velbis" target="_blank" class="cert-card">
+        <div class="cert-ms-badge">🎖️ Microsoft Certified</div>
+        <div class="cert-name">Azure Fundamentals</div>
+        <div class="cert-code">AZ-900</div>
+        <div class="cert-meta">May 2023</div>
+        <div class="cert-link">View on Credly ↗</div>
+      </a>
+      <a href="https://www.credly.com/users/james-rupert-velbis" target="_blank" class="cert-card">
+        <div class="cert-ms-badge">🎖️ Microsoft Certified</div>
+        <div class="cert-name">Data Engineer Associate</div>
+        <div class="cert-code">DP-203</div>
+        <div class="cert-meta">June 2023</div>
+        <div class="cert-link">View on Credly ↗</div>
+      </a>
+      <a href="https://www.credly.com/users/james-rupert-velbis" target="_blank" class="cert-card">
+        <div class="cert-ms-badge">🎖️ Microsoft Certified</div>
+        <div class="cert-name">Power BI Data Analyst Associate</div>
+        <div class="cert-code">PL-300</div>
+        <div class="cert-meta">May 2023</div>
+        <div class="cert-link">View on Credly ↗</div>
+      </a>
+      <div class="cert-card">
+        <div class="cert-safety-badge">🦺 Safety</div>
+        <div class="cert-name">Construction Occupational Safety and Health</div>
+        <div class="cert-code">COSH</div>
+        <div class="cert-meta">October 2015</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="tab-panel" id="tab-awards">
+    <div class="panel-title">Awards &amp; <span>Recognition</span></div>
+    <div class="awards-wrap">
+      <div class="award-card" style="flex-direction:column; gap:20px;">
+        <div style="display:flex; align-items:flex-start; gap:24px;">
+          <div class="award-emoji">🏆</div>
+          <div>
+            <div class="award-title">Gantimpala Award: Likha</div>
+            <div class="award-sub">Drive Innovation for Positive Change · Accenture, Inc.</div>
+            <div class="award-badge">✦ Q2 2024 &nbsp; ✦ Q3 2024 — Awarded Two Consecutive Quarters from different teams</div>
+          </div>
+        </div>
+        <div style="position:relative; overflow:hidden; border:1px solid var(--border2); cursor:pointer;" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="https://i.imgur.com/U4JPnzT.gif" 
+	  alt="Gantimpala Award Certificate" 
+	  style="width:100%; max-height:260px; object-fit:cover; object-position:top; display:block; transition:transform 0.3s; filter:brightness(0.92);" onmouseover="this.style.transform='scale(1.02)'; this.style.filter='brightness(1)'" onmouseout="this.style.transform='scale(1)'; this.style.filter='brightness(0.92)'">
+          <div style="position:absolute; bottom:0; left:0; right:0; padding:8px 12px; background:linear-gradient(transparent, rgba(6,8,16,0.8)); font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted2); letter-spacing:0.06em;">🔍 Click to enlarge</div>
+        </div>
+      </div>
+      <div class="award-card" style="flex-direction:column; gap:20px;">
+        <div style="display:flex; align-items:flex-start; gap:24px;">
+          <div class="award-emoji">💡</div>
+          <div>
+            <div class="award-title">Innovation Champion</div>
+            <div class="award-sub">Accenture, Inc. · September 2023</div>
+            <div class="award-badge">✦ Recognized for Outstanding Process Innovation</div>
+          </div>
+        </div>
+        <div style="position:relative; overflow:hidden; border:1px solid var(--border2); cursor:pointer;" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="https://i.imgur.com/U4JPnzT.gif" 
+	  alt="Innovation Champion Certificate" 
+	  style="width:100%; max-height:260px; object-fit:cover; object-position:top; display:block; transition:transform 0.3s; filter:brightness(0.92);" onmouseover="this.style.transform='scale(1.02)'; this.style.filter='brightness(1)'" onmouseout="this.style.transform='scale(1)'; this.style.filter='brightness(0.92)'">
+          <div style="position:absolute; bottom:0; left:0; right:0; padding:8px 12px; background:linear-gradient(transparent, rgba(6,8,16,0.8)); font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted2); letter-spacing:0.06em;">🔍 Click to enlarge</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="tab-panel" id="tab-contact">
+    <div class="panel-title">Get in <span>Touch</span></div>
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="contact-intro">Let's work<br><span>together.</span></div>
+        <p class="contact-desc">
+          Open to IT Service Desk, SaaS Support, and enterprise application roles — locally and internationally, including opportunities with visa sponsorship.
+        </p>
+        <a href="https://www.google.com/maps/search/Biñan,+Laguna,+Philippines" target="_blank" class="contact-loc">📍 Biñan, Laguna, Philippines ↗</a>
+      </div>
+      <div class="contact-right">
+        <a href="mailto:jamesrupertvelbis@gmail.com" class="contact-item">
+          <div class="c-icon">✉️</div>
+          <div><div class="c-label">Email</div><div class="c-val">jamesrupertvelbis@gmail.com</div></div>
+        </a>
+        <a href="tel:+639179665565" class="contact-item">
+          <div class="c-icon">📞</div>
+          <div><div class="c-label">Phone</div><div class="c-val">0917-966-5565</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/james-rupert-velbis-592399113/" target="_blank" class="contact-item">
+          <div class="c-icon">🔗</div>
+          <div><div class="c-label">LinkedIn</div><div class="c-val">james-rupert-velbis ↗</div></div>
+        </a>
+        <a href="https://www.credly.com/users/james-rupert-velbis" target="_blank" class="contact-item">
+          <div class="c-icon">🎖️</div>
+          <div><div class="c-label">Certifications</div><div class="c-val">View Badges on Credly ↗</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-name">James Rupert L. Velbis</div>
+    <div class="footer-role">Application & Technical SaaS Support Specialist</div>
+  </div>
+  <div class="footer-right">
+    © <span id="current-year"></span> · All rights reserved
+  </div>
+</footer>
+
+<script>
+  // Auto update year
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:999; align-items:center; justify-content:center; padding:24px; cursor:zoom-out;">
+  <img id="lightbox-img" src="" alt="" style="max-width:90vw; max-height:88vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.8);">
+  <div style="position:absolute; top:20px; right:28px; font-size:28px; color:#fff; cursor:pointer; opacity:0.7;" onclick="closeLightbox()">✕</div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+function scrollToTab(id) {
+  const btn = Array.from(document.querySelectorAll('.tab-btn'))
+    .find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + id + "'"));
+  switchTab(id, btn);
+  document.getElementById('content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  const lb = document.getElementById('lightbox');
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
